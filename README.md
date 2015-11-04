@@ -21,6 +21,9 @@ Institutions and associations that should accept this format:
 However, always verify generated files with your bank before using!
 
 
+#This fork
+This fork fixes some issues specific to _pain.008.001.02_ version
+
 ##Installation
 ###Composer
 This library is available in packagist.org, you can add it to your project
