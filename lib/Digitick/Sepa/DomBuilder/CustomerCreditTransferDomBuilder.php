@@ -138,11 +138,14 @@ class CustomerCreditTransferDomBuilder extends BaseDomBuilder
         $CdtTrfTxInf->appendChild($amount);
 
         //Creditor Agent 2.77
-        $creditorAgent = $this->createElement('CdtrAgt');
-        $financialInstitution = $this->createElement('FinInstnId');
-        $financialInstitution->appendChild($this->createElement('BIC', $transactionInformation->getBic()));
-        $creditorAgent->appendChild($financialInstitution);
-        $CdtTrfTxInf->appendChild($creditorAgent);
+        if ($transactionInformation->getBic() != null)
+        {
+            $creditorAgent = $this->createElement('CdtrAgt');
+            $financialInstitution = $this->createElement('FinInstnId');
+            $financialInstitution->appendChild($this->createElement('BIC', $transactionInformation->getBic()));
+            $creditorAgent->appendChild($financialInstitution);
+            $CdtTrfTxInf->appendChild($creditorAgent);
+        }
 
         // Creditor 2.79
         $creditor = $this->createElement('Cdtr');
@@ -178,6 +181,16 @@ class CustomerCreditTransferDomBuilder extends BaseDomBuilder
             $orgId = $this->createElement('OrgId');
             $othr  = $this->createElement('Othr');
             $othr->appendChild($this->createElement('Id', $groupHeader->getInitiatingPartyId()));
+            
+            // NZC
+            // $SchmeNm = $this->createElement('SchmeNm');
+            // $Prtry = $this->createElement('Prtry', 'SEPA');
+            // $Issr = $this->createElement('Issr', 'ISO');
+            // $SchmeNm->appendChild($Prtry);
+
+            // $othr->appendChild($SchmeNm);
+            // $othr->appendChild($Issr);
+
             $orgId->appendChild($othr);
             $newId->appendChild($orgId);
 
