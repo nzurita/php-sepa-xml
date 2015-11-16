@@ -22,7 +22,7 @@ However, always verify generated files with your bank before using!
 
 
 #This fork
-This fork fixes some issues specific to _pain.008.001.02_ version
+This fork fixes some issues specific to _pain.001.001.03_ version
 
 ##Installation
 ###Composer
